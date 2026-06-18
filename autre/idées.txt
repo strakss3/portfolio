@@ -1,0 +1,11 @@
+inspirations : https://github.com/emmabostian/developer-portfolios
+
+UNBEATABLE ui style
+interactive terminal : https://augustopolonio.vercel.app/
+    souvre par dessus le menu
+low poly ish background / landscape
+    Three.js ou Babylon.js pour le rendu de la scene 3D
+affichage des skills par catégories : https://www.abdallaahmed.icu/en
+projets
+    miniature + petit résumé. Click => pop up : https://www.garlicbread.space/
+
