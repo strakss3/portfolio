@@ -1,0 +1,7 @@
+.terminal {
+
+    font-family: "JetBrains Mono", monospace;
+    width: 800px;
+    border: solid 2px;
+    border-radius: 6px;
+}

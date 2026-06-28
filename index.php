@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<HTML>
-<HEAD>
-    <title>Welcome to Ethan's PortFolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="icon.ico">
-    <link rel="stylesheet" href="style.css">
-
-    <script>
-
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Three.js</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
     </script>
-</HEAD>
-<BODY>
-    
-</BODY>
-</HTML>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
