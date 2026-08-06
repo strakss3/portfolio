@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // 1. Scène
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x87ceeb);
+scene.background = new THREE.Color(0x000000);
 
 // 2. Caméra
 const camera = new THREE.PerspectiveCamera(
@@ -38,6 +38,14 @@ loader.load(
     'modele.glb',
     function (gltf) {
         scene.add(gltf.scene);
+        gltf.scene.traverse(function(object) {
+        console.log('Objet :', object.name, object.type);
+        if (object.isMesh) {
+            console.log('  Matériau :', object.material);
+            console.log('  Couleur :', object.material.color);
+            console.log('  Texture :', object.material.map);
+        }
+        })
         console.log('Modèle chargé avec succès');
     },
     function (xhr) {
