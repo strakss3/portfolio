@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="terminal">
+<div class="terminal jetbrains-mono">
     <div>ethanbernon@portfolio:~</div>
     <div id="terminal-output">
         bienvenue dans le terminal
