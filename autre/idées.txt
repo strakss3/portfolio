@@ -3,19 +3,19 @@ inspirations : https://github.com/emmabostian/developer-portfolios
 UNBEATABLE ui style
 interactive terminal : https://augustopolonio.vercel.app/
     souvre par dessus le menu
+    quand on clique sur le term, ça focus
     help
     cat
-    clear
     cd
     ls
     pwd
     Tab
-    flèches haut/bas
 low poly ish background / landscape
     Three.js ou Babylon.js pour le rendu de la scene 3D
 affichage des skills par catégories : https://www.abdallaahmed.icu/en
 projets
     miniature + petit résumé. Click => pop up : https://www.garlicbread.space/
 
+https://arcolinux.com/changing-your-shell-from-bash-to-zsh-and-back-any-desktop/
 
 https://sketchfab.com/3d-models/low-poly-computer-desk-646ed84ecd9d40089c31d94f79334ca5
