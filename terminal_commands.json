@@ -1,0 +1,9 @@
+{
+    "help" : "Liste des commandes disponibles :<br>help - affiche l'aide pour les commandes<br>cat &lt;file&gt - ouvre...<br>clear - efface le terminal<br>A finir ... !!!!!",
+    "cat" : "miaou",
+    "cd" : "placeholder cd...",
+    "clear" : "bienvenue dans le terminal",
+    "ls" : "placeholder ls...",
+    "open" : "ouverture du site",
+    "" : ""
+}

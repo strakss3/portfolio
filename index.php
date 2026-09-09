@@ -29,7 +29,8 @@
     <br>
     <br>
     <main>
-        <a href="page2.php">Test Three.js</a>
+        <a href="egg.php">Egg room</a><br>
+        <a href="background.php">Three.js</a>
         <?php include "terminal.php"?>
     </main>
     <br><br><br>

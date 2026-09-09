@@ -7,9 +7,20 @@ interactive terminal : https://augustopolonio.vercel.app/
     help
     cat
     cd
+    clear
+    open
     ls
-    pwd
-    Tab
+
+    portfolio
+        cv.pdf
+        github
+        skills.json
+        about_me.txt
+
+
+
+
+
 low poly ish background / landscape
     Three.js ou Babylon.js pour le rendu de la scene 3D
 affichage des skills par catégories : https://www.abdallaahmed.icu/en
