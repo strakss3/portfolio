@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<div class="terminal jetbrains-mono">
-    <div>ethanbernon@portfolio:~</div>
+<div class="terminal jetbrains-mono" for="terminal-input">
+    <div id="terminal-header">ethanbernon@portfolio:~</div>
     <div id="terminal-text">
         <div id="terminal-output">
             bienvenue dans le terminal
@@ -21,6 +21,10 @@
                 const command = document.createElement("div");
                 command.innerHTML = "$ ethanbernon ~ " + input.value;
                 document.getElementById("terminal-output").appendChild(command);
+                <?php 
+                    $file = fopen("respond.txt", "r");
+                    $array_reponses = explode("|", fgets($file));
+                ?>
 
                 switch(input.value) {
                     case "help" :
@@ -32,6 +36,13 @@
                                 "clear - efface le terminal";
                         break;
 
+                    case "cat" :
+                        array_input.push(input.value);
+                        index = array_input.length;
+
+                        text = "<?php echo fgets($file)?>";
+                        break;
+
                     case "clear" :
                         array_input.push(input.value);
                         index = array_input.length;
@@ -39,6 +50,12 @@
                         document.getElementById("terminal-output").innerHTML = "";
                         break;
                     
+                    case "ls" :
+                        array_input.push(input.value);
+                        index = array_input.length;
+                        text = "placeholder...";
+                        break;
+
                     case "" :
                         text = "";
                         break;
@@ -54,9 +71,6 @@
                 result.innerHTML = text;
                 document.getElementById("terminal-output").appendChild(result);
                 input.value = "";
-                
-                var objDiv = document.getElementById("terminal-text");
-                objDiv.scrollTop = objDiv.scrollHeight;
             }
             if(event.key === "ArrowUp") {
 
@@ -77,5 +91,8 @@
                     input.value = "";
                 }
             }
+
+            var objDiv = document.getElementById("terminal-text");
+            objDiv.scrollTop = objDiv.scrollHeight;
         });
 </script>

@@ -32,12 +32,19 @@
 
   width: 800px;
   height: 450px;
-  background-color: #353b4b;
+  background-color: #101828;
   font-size: 16px;
   overflow: auto;
   border: solid 2px;
   border-radius: 6px;
+  border-color: red;
   padding: 10px;
+}
+
+#terminal-header {
+
+  border: solid 2px;
+  border-color: red;
 }
 
 #terminal-text {
