@@ -7,8 +7,7 @@ TERMINAL :
     
     design : https://arcolinux.com/changing-your-shell-from-bash-to-zsh-and-back-any-desktop/
     
-    souvre par dessus le menu
-    quand on clique sur le term, ça focus
+    quand on clique dessus, ça focus
     
     commands :
         help
@@ -16,11 +15,12 @@ TERMINAL :
         cd
         clear
         ls
+	pwd
     
     portfolio/
     ├── about_me.txt
     ├── cv.pdf
-    ├── github
+    ├── gitHub.com
     └── skills.json
 
 
