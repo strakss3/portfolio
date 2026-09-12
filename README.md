@@ -7,7 +7,6 @@ A personal portfolio website built with PHP, CSS, JavaScript and Three.js, featu
 ---
 
 ![Portfolio Preview](assets/screenshot.png)
-*Replace this line with your screenshot once available*
 
 ---
 
@@ -33,21 +32,19 @@ A personal portfolio website built with PHP, CSS, JavaScript and Three.js, featu
 portfolio/
 ├── index.php
 ├── pages/
-│   ├── about.php
-│   ├── terminal.php
 │   └── egg.php
 ├── includes/
-│   ├── header.php
-│   ├── footer.php
-│   └── nav.php
+│   ├── background.php
+|   └── terminal.php
 ├── assets/
 │   ├── css/
 │   │   └── styles.css
 │   ├── js/
 │   │   ├── background.js
-│   │   ├── terminal.js
-│   │   └── transitions.js
+│   │   └── eggs.js
 │   ├── models/
+│   │   ├── Egg_room_tree.blend
+│   │   ├── Egg_room_tree.blend1
 │   │   └── modele.glb
 │   └── icons/
 │       └── icon.ico
@@ -77,4 +74,4 @@ portfolio/
 
 ## License
 
-© 2026 Ethan Bernon — All rights reserved.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
