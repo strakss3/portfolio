@@ -17,6 +17,6 @@
         }
     }
     </script>
-    <script type="module" src="js/egg.js"></script>
+    <script type="module" src="../js/egg.js"></script>
 </body>
 </html>

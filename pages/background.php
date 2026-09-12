@@ -33,7 +33,7 @@
         }
     }
     </script>
-    <script type="module" src="js/background.js"></script>
+    <script type="module" src="../js/background.js"></script>
     <a href="index.php" class="content"><button>Back to main menu</button></a><br>
     <button id="btn-circle" class="content">Cercle</button>
     <button id="btn-wave" class="content">Vague</button>

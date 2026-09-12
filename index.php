@@ -31,7 +31,7 @@
     <main>
         <a href="egg.php">Egg room</a><br>
         <a href="background.php">Three.js</a>
-        <?php include "terminal.php"?>
+        <?php include "includes/terminal.php"?>
     </main>
     <br><br><br>
     <footer>

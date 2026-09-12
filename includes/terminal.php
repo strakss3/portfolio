@@ -15,7 +15,7 @@
         const array_command = new Array("");
         let command_index = 0;
 
-        <?php $array_json = json_decode(file_get_contents("terminal_commands.json"), true)?>
+        <?php $array_json = json_decode(file_get_contents("../data/terminal_commands.json"), true)?>
         const array_json = <?= json_encode($array_json, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
         user_input.addEventListener("keydown", function(event) {
