@@ -1,32 +1,32 @@
 inspirations : https://github.com/emmabostian/developer-portfolios
 
-UNBEATABLE ui style
-interactive terminal : https://augustopolonio.vercel.app/
+
+TERMINAL :
+    https://augustopolonio.vercel.app/
+    https://010101-sans.is-a.dev/
+    
+    design : https://arcolinux.com/changing-your-shell-from-bash-to-zsh-and-back-any-desktop/
+    
     souvre par dessus le menu
     quand on clique sur le term, ça focus
-    help
-    cat
-    cd
-    clear
-    open
-    ls
-
-    portfolio
-        cv.pdf
-        github
-        skills.json
-        about_me.txt
-
-
-
+    
+    commands :
+        help
+        cat
+        cd
+        clear
+        ls
+    
+    portfolio/
+    ├── about_me.txt
+    ├── cv.pdf
+    ├── github
+    └── skills.json
 
 
-low poly ish background / landscape
-    Three.js ou Babylon.js pour le rendu de la scene 3D
-affichage des skills par catégories : https://www.abdallaahmed.icu/en
-projets
+SKILLS : 
+    affichage par catégories : https://www.abdallaahmed.icu/en
+
+
+PROJETCS :
     miniature + petit résumé. Click => pop up : https://www.garlicbread.space/
-
-https://arcolinux.com/changing-your-shell-from-bash-to-zsh-and-back-any-desktop/
-
-https://sketchfab.com/3d-models/low-poly-computer-desk-646ed84ecd9d40089c31d94f79334ca5
