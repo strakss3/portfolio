@@ -26,7 +26,23 @@ TERMINAL :
 
 SKILLS : 
     affichage par catégories : https://www.abdallaahmed.icu/en
+    
+    languages :
+        C
+        C++
+        python
+        html
+        css
+        java
+        sql
+        mcfunction
+        php
+        git
+
+
 
 
 PROJETCS :
     miniature + petit résumé. Click => pop up : https://www.garlicbread.space/
+
+    github activity

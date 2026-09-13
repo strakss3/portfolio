@@ -3,7 +3,7 @@
 <head>
     <title>Welcome to Ethan's Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/icons/icon.ico">
     <link rel="stylesheet" href="./styles.css">
 
     <!-- google font -->
@@ -29,9 +29,9 @@
     <br>
     <br>
     <main>
-        <a href="egg.php">Egg room</a><br>
-        <a href="background.php">Three.js</a>
-        <?php include "includes/terminal.php"?>
+        <a href="./pages/egg.php">Egg room</a><br>
+        <a href="./includes/background.php">Three.js</a>
+        <?php include "./includes/terminal.php"?>
     </main>
     <br><br><br>
     <footer>
