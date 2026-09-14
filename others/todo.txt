@@ -18,10 +18,18 @@ TERMINAL :
 	pwd
     
     portfolio/
+    ├── projects/
+    │   ├── project1.txt
+    │   └── project2.txt
+    ├── experiences/
+    │   ├── experience1.txt
+    │   └── experience2.txt
     ├── about_me.txt
+    ├── contact.txt
     ├── cv.pdf
     ├── gitHub.com
     └── skills.json
+
 
 
 SKILLS : 

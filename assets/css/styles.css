@@ -2,6 +2,13 @@ body {
 
   background-color: #08080f;
   color: white;
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas {
+  
+  display: block;
 }
 
 .arimo {

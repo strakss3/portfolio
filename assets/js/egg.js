@@ -35,7 +35,7 @@ controls.enableDamping = true;
 // 6. Chargement du modèle
 const loader = new GLTFLoader();
 loader.load(
-    'modele.glb',
+    '../assets/models/modele.glb',
     function (gltf) {
         scene.add(gltf.scene);
         gltf.scene.traverse(function(object) {

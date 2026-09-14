@@ -1,9 +1,23 @@
 {
-    "help" : "Liste des commandes disponibles :<br>help - affiche l'aide pour les commandes<br>cat &lt;file&gt - ouvre...<br>clear - efface le terminal<br>A finir ... !!!!!",
-    "cat" : "miaou",
-    "cd" : "placeholder cd...",
-    "clear" : "bienvenue dans le terminal",
-    "ls" : "placeholder ls...",
-    "open" : "ouverture du site",
-    "" : ""
+    "static" : {
+        "help" : "placeholder help...",
+        "" : ""
+    },
+    "filesystem" : {
+        "~" : {
+            "projects" : {
+                "project1.txt" : "placeholder project1.txt...",
+                "project2.txt" : "placeholder project2.txt..."
+            },
+            "experiences" : {
+                "experience1.txt" : "placeholder experience1.txt...",
+                "experience2.txt" : "placeholder experience2.txt..."
+            },
+            "about_me.txt" : "placeholder about_me.txt...",
+            "contact.txt" : "placeholder contact.txt...",
+            "cv.pdf" : "placeholder cv.pdf...",
+            "github.com" : "placeholder github.com...",
+            "skills.json" : "placeholder skills.json..."
+        }
+    }
 }

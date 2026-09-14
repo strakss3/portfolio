@@ -4,7 +4,7 @@
     <title>Welcome to Ethan's Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="./assets/icons/icon.ico">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Test Three.js</title>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        canvas { display: block; }
-    </style>
-</head>
 <body>
     <script type="importmap">
     {
@@ -17,6 +7,6 @@
         }
     }
     </script>
-    <script type="module" src="../js/egg.js"></script>
+    <script type="module" src="../assets/js/egg.js"></script>
 </body>
 </html>
