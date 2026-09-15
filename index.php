@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <?php define("BASE_URL", "/portfolio/")?>
 </head>
 
 <body>
@@ -29,9 +30,9 @@
     <br>
     <br>
     <main>
-        <a href="./pages/egg.php">Egg room</a><br>
-        <a href="./includes/background.php">Three.js</a>
-        <?php include "./includes/terminal.php"?>
+        <a href="<?= BASE_URL  ?>/pages/egg.php">Egg room</a><br>
+        <a href="<?= BASE_URL  ?>/includes/background.php">Three.js</a>
+        <?php include __DIR__ . "/includes/terminal.php"?>
     </main>
     <br><br><br>
     <footer>

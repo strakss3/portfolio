@@ -1,12 +1,14 @@
 const user_input    = document.getElementById("terminal-input");
 const div_output    = document.getElementById("terminal-output");
+const div_text      = document.getElementById("terminal-text");
+const div_terminal  = document.getElementById("terminal");
 const array_command = ["", ""];
 let command_index   = 0;
 let current_path    = "~";
 let data            = null;
 
 async function init() {
-    
+
     const response = await fetch("/portfolio/data/terminal_commands.json");
     data = await response.json();
     startTerminal();
@@ -67,6 +69,7 @@ function startTerminal() {
             if (!args[0] || args[0] === '~') {
                 
                 current_path = '~';
+                document.getElementById("terminal-header").innerHTML = `ethanbernon@portfolio:${current_path}`;
                 return '';
             }
             if (args[0] === '..') {
@@ -77,6 +80,7 @@ function startTerminal() {
                 const parts = current_path.split('/');
                 parts.pop();
                 current_path = parts.join('/');
+                document.getElementById("terminal-header").innerHTML = `ethanbernon@portfolio:${current_path}`;
                 return '';
             }
             const node = getCurrentNode();
@@ -86,6 +90,7 @@ function startTerminal() {
                 return `cd: ${args[0]}: no such directory`;
             }
             current_path = `${current_path}/${args[0]}`;
+            document.getElementById("terminal-header").innerHTML = `ethanbernon@portfolio:${current_path}`;
             return "";
         },
 
@@ -162,8 +167,11 @@ function startTerminal() {
             user_input.value = array_command[command_index];
         }
     
-        var objDiv = document.getElementById("terminal-text");
-        objDiv.scrollTop = objDiv.scrollHeight;
+        div_text.scrollTop = div_text.scrollHeight;
+    })
+    
+    div_terminal.addEventListener("click", function(event) {
+        user_input.focus();
     });
 }
 init();

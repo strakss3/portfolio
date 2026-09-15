@@ -31,6 +31,9 @@ TERMINAL :
     └── skills.json
 
 
+ABOUT ME :
+    petit text
+
 
 SKILLS : 
     affichage par catégories : https://www.abdallaahmed.icu/en
@@ -48,9 +51,14 @@ SKILLS :
         git
 
 
-
-
 PROJETCS :
     miniature + petit résumé. Click => pop up : https://www.garlicbread.space/
 
     github activity
+
+
+CONTACT :
+    mail
+    github
+    linkedin
+    num tel
