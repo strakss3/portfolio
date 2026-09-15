@@ -18,7 +18,7 @@ function startTerminal() {
 
     function isDir(node) {
     
-        return typeof node === 'object' && node !== null;
+        return typeof node === "object" && node !== null;
     }
 
     function getCurrentNode() {
@@ -38,7 +38,7 @@ function startTerminal() {
     
     const commands = {
 
-        ls: () => {
+        ls: function() {
 
             const node = getCurrentNode();
             let files = "";
@@ -49,7 +49,7 @@ function startTerminal() {
             return files;
         },
 
-        cat: (args) => {
+        cat: function(args) {
 
             if (!args[0]) {
                 
@@ -59,29 +59,30 @@ function startTerminal() {
             const target = node[args[0]];
             if (target === undefined || isDir(target)) {
 
-                return `cat: ${args[0]}: no such file `;
+                return `cat: ${args[0]}: no such file`;
             }
             return target;
         },
 
-        cd: (args) => {
+        cd: function(args) {
 
-            if (!args[0] || args[0] === '~') {
+            if (!args[0] || args[0] === "~") {
                 
-                current_path = '~';
+                current_path = "~";
                 document.getElementById("terminal-header").innerHTML = `ethanbernon@portfolio:${current_path}`;
-                return '';
+                return "";
             }
-            if (args[0] === '..') {
-                if (current_path === '~') {
+            if (args[0] === "..") {
                 
-                    return '';
+                if (current_path === "~") {
+                
+                    return "";
                 }
-                const parts = current_path.split('/');
+                const parts = current_path.split("/");
                 parts.pop();
-                current_path = parts.join('/');
+                current_path = parts.join("/");
                 document.getElementById("terminal-header").innerHTML = `ethanbernon@portfolio:${current_path}`;
-                return '';
+                return "";
             }
             const node = getCurrentNode();
             const target = node[args[0]];
@@ -170,8 +171,6 @@ function startTerminal() {
         div_text.scrollTop = div_text.scrollHeight;
     })
     
-    div_terminal.addEventListener("click", function(event) {
-        user_input.focus();
-    });
+    div_terminal.addEventListener("click", () => user_input.focus());
 }
 init();

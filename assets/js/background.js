@@ -1,125 +1,252 @@
 import * as THREE from 'three';
 
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x08080f);
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 camera.position.z = 8;
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
 
-// Données des particules
-const N = 500;
+
+
+function getVisibleBounds(cam, depth) {
+    const vFOV = (cam.fov * Math.PI) / 180;
+    const height = 2 * Math.tan(vFOV / 2) * depth;
+    const width  = height * cam.aspect;
+    return { width, height };
+}
+
+let bounds = getVisibleBounds(camera, camera.position.z);
+
+
+
+const N = 600;
 const positions = new Float32Array(N * 3);
 const particlesData = [];
 
 for (let i = 0; i < N; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 10;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 2;
+    const x = (Math.random() - 0.5) * bounds.width;
+    const y = (Math.random() - 0.5) * bounds.height;
+    const z = (Math.random() - 0.5) * 2;
+
+    positions[i * 3]     = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
 
     particlesData.push({
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: -(Math.random() * 0.08 + 0.002),
-        offset: Math.random() * Math.PI * 2,
-        amplitude: Math.random() * 0.008,
-        tx: 0, ty: 0,
+        vx:        (Math.random() - 0.5) * 0.006,
+        vy:        -(Math.random() * 0.008 + 0.002),
+        offset:    Math.random() * Math.PI * 2,
+        amplitude: Math.random() * 0.006,
+        tx: 0,
+        ty: 0,
         forming: false
     });
 }
 
-// Géométrie Three.js
 const geometry = new THREE.BufferGeometry();
 geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+/* ─── Couleurs par particule ─── */
+
+const palette = [
+    [0.55, 0.40, 1.00],
+    [0.30, 0.55, 1.00],
+    [1.00, 0.35, 0.65],
+    [0.30, 0.85, 0.75],
+    [1.00, 0.70, 0.25]
+];
+
+const colors = new Float32Array(N * 3);
+for (let i = 0; i < N; i++) {
+    const c = palette[Math.floor(Math.random() * palette.length)];
+    colors[i * 3]     = c[0];
+    colors[i * 3 + 1] = c[1];
+    colors[i * 3 + 2] = c[2];
+}
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
 const material = new THREE.PointsMaterial({
-    color: 0x8888ff,
-    size: 0.06,
-    transparent: true,
-    opacity: 0.8
+    size:         0.07,
+    vertexColors: true,
+    transparent:  true,
+    opacity:      0.85,
+    sizeAttenuation: true
 });
 
-const particles = new THREE.Points(geometry, material);
-scene.add(particles);
+const points = new THREE.Points(geometry, material);
+scene.add(points);
 
-// Fonctions de forme
+/* ─── Générateurs de formes ─── */
+
 function getCircleTargets(n) {
-    const targets = [];
+    const out = [];
+    const radius = Math.min(bounds.width, bounds.height) * 0.32;
     for (let i = 0; i < n; i++) {
         const angle = (i / n) * Math.PI * 2;
-        targets.push({ x: Math.cos(angle) * 3, y: Math.sin(angle) * 3 });
+        out.push({
+            x: Math.cos(angle) * radius + (Math.random() - 0.5) * 0.15,
+            y: Math.sin(angle) * radius + (Math.random() - 0.5) * 0.15
+        });
     }
-    return targets;
+    return out;
+}
+
+function getStarTargets(n) {
+    const out = [];
+    const r1 = Math.min(bounds.width, bounds.height) * 0.30;
+    const r2 = r1 * 0.42;
+    const branches = 5;
+    for (let i = 0; i < n; i++) {
+        const t     = i / n;
+        const idx   = Math.floor(t * branches * 2);
+        const frac  = (t * branches * 2) - idx;
+        const aStart = (idx       / (branches * 2)) * Math.PI * 2 - Math.PI / 2;
+        const aEnd   = ((idx + 1) / (branches * 2)) * Math.PI * 2 - Math.PI / 2;
+        const rStart = idx % 2 === 0 ? r1 : r2;
+        const rEnd   = idx % 2 === 0 ? r2 : r1;
+        const curA   = aStart + frac * (aEnd - aStart);
+        const curR   = rStart + frac * (rEnd - rStart);
+        out.push({
+            x: Math.cos(curA) * curR + (Math.random() - 0.5) * 0.12,
+            y: Math.sin(curA) * curR + (Math.random() - 0.5) * 0.12
+        });
+    }
+    return out;
 }
 
 function getWaveTargets(n) {
-    const targets = [];
+    const out = [];
+    const halfW = bounds.width * 0.42;
+    const amp   = bounds.height * 0.18;
     for (let i = 0; i < n; i++) {
-        const t = (i / n) * Math.PI * 4;
-        targets.push({
-            x: (i / n - 0.5) * 10,
-            y: Math.sin(t) * 2
+        const t = i / n;
+        out.push({
+            x: (t - 0.5) * halfW * 2,
+            y: Math.sin(t * Math.PI * 4) * amp + (Math.random() - 0.5) * 0.12
         });
     }
-    return targets;
+    return out;
 }
+
+function getGridTargets(n) {
+    const out  = [];
+    const cols = Math.ceil(Math.sqrt(n * 1.6));
+    const rows = Math.ceil(n / cols);
+    const gw   = bounds.width  * 0.55;
+    const gh   = bounds.height * 0.50;
+    const ox   = -gw / 2;
+    const oy   = -gh / 2;
+    for (let i = 0; i < n; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        out.push({
+            x: ox + (col / (cols - 1)) * gw + (Math.random() - 0.5) * 0.08,
+            y: oy + (row / (rows - 1)) * gh + (Math.random() - 0.5) * 0.08
+        });
+    }
+    return out;
+}
+
+function getNewShapeTargets(n) {
+
+    return
+}
+
+/* ─── Appliquer une forme ─── */
 
 function setShape(shape) {
     let targets = [];
+
+    if (shape === 'none') {
+        particlesData.forEach(d => { d.forming = false; });
+        return;
+    }
     if (shape === 'circle') targets = getCircleTargets(N);
+    if (shape === 'star')   targets = getStarTargets(N);
     if (shape === 'wave')   targets = getWaveTargets(N);
+    if (shape === 'grid')   targets = getGridTargets(N);
+    if (shape === 'new')   targets = getNewShapeTargets(N);
 
     particlesData.forEach((d, i) => {
-        d.tx = targets[i].x;
-        d.ty = targets[i].y;
+        d.tx      = targets[i].x;
+        d.ty      = targets[i].y;
         d.forming = true;
     });
 }
 
-function resetShape() {
-    particlesData.forEach(d => d.forming = false);
-}
+/* ─── Boutons ─── */
 
-// Boutons HTML
-document.getElementById('btn-circle')?.addEventListener('click', () => setShape('circle'));
-document.getElementById('btn-wave')?.addEventListener('click',   () => setShape('wave'));
-document.getElementById('btn-reset')?.addEventListener('click',  () => resetShape());
+document.querySelectorAll('nav button').forEach(btn => {
+    btn.addEventListener('mouseover', function () {
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        setShape(this.dataset.shape);
+    }),
+    btn.addEventListener('mouseout', function () {
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        setShape("none");
+    })
+});
 
-// Boucle d'animation
+/* ─── Boucle d'animation ─── */
+
 let t = 0;
+
 function animate() {
     requestAnimationFrame(animate);
     t += 0.01;
 
+    const halfH = bounds.height / 2;
+    const halfW = bounds.width  / 2;
+
     for (let i = 0; i < N; i++) {
-        const d = particlesData[i];
+        const d  = particlesData[i];
+        const ix = i * 3;
+        const iy = i * 3 + 1;
 
         if (d.forming) {
-            positions[i * 3]     += (d.tx - positions[i * 3])     * 0.05;
-            positions[i * 3 + 1] += (d.ty - positions[i * 3 + 1]) * 0.05;
+            // Lerp vers la cible
+            positions[ix] += (d.tx - positions[ix]) * 0.05;
+            positions[iy] += (d.ty - positions[iy]) * 0.05;
         } else {
-            positions[i * 3]     += d.vx + Math.sin(t + d.offset) * d.amplitude;
-            positions[i * 3 + 1] += d.vy;
+            // Dérive organique
+            positions[ix] += d.vx + Math.sin(t + d.offset) * d.amplitude;
+            positions[iy] += d.vy;
 
-            console.log(positions[i*3+1]);
-            if (positions[i * 3 + 1] > 5)  {
-                
-                positions[i * 3 + 1] = -5;
+            // Recycler quand la particule sort des bords visibles
+            if (positions[iy] < -halfH) {
+                positions[iy] = halfH;
+                positions[ix] = (Math.random() - 0.5) * bounds.width;
             }
-            if (positions[i * 3]     > 5)   positions[i * 3]     = -5;
-            if (positions[i * 3]     < -5)  positions[i * 3]     =  5;
+            if (positions[ix] >  halfW) positions[ix] = -halfW;
+            if (positions[ix] < -halfW) positions[ix] =  halfW;
         }
     }
 
-    particles.geometry.attributes.position.needsUpdate = true;
+    points.geometry.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
 }
+
 animate();
+
+/* ─── Resize ─── */
 
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    bounds = getVisibleBounds(camera, camera.position.z);
 });

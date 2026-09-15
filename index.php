@@ -14,29 +14,6 @@
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to Ethan's Portfolio</h1>
-    </header>
-    <nav>
-        <div>
-            <button class="button-menu arimo">ABOUT ME</button>
-            <button class="button-menu arimo">SKILLS</button>
-            <button class="button-menu arimo">PROJECTS</button>
-            <button class="button-menu arimo">CONTACT</button>
-        </div>
-    </nav>
-    <br>
-    <br>
-    <br>
-    <br>
-    <main>
-        <a href="<?= BASE_URL  ?>/pages/egg.php">Egg room</a><br>
-        <a href="<?= BASE_URL  ?>/includes/background.php">Three.js</a>
-        <?php include __DIR__ . "/includes/terminal.php"?>
-    </main>
-    <br><br><br>
-    <footer>
-        <div>2026 licence</div>
-    </footer>
+    <?php include __DIR__ . "/includes/background.php" ?>
 </body>
 </html>

@@ -288,7 +288,7 @@ function setShape(shape) {
 /* ─── Boutons ─── */
 
 document.querySelectorAll('nav button').forEach(btn => {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('mouseover', function () {
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         setShape(this.dataset.shape);

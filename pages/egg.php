@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <script type="importmap">
 {
     "imports": {
@@ -7,4 +6,4 @@
     }
 }
 </script>
-<script type="module" src="../assets/js/egg.js"></script>
+<script type="module" src="<?= BASE_URL ?>/assets/js/egg.js"></script>
