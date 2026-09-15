@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div class="terminal jetbrains-mono">
     <div id="terminal-header">ethanbernon@portfolio:~</div>
     <div id="terminal-text">

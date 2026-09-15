@@ -1,7 +1,6 @@
 {
     "static" : {
-        "help" : "placeholder help...",
-        "" : ""
+        "help" : "placeholder help..."
     },
     "filesystem" : {
         "~" : {

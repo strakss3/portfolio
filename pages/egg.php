@@ -1,12 +1,10 @@
-<body>
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-        }
+<!DOCTYPE html>
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
     }
-    </script>
-    <script type="module" src="../assets/js/egg.js"></script>
-</body>
-</html>
+}
+</script>
+<script type="module" src="../assets/js/egg.js"></script>
